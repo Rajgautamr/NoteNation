@@ -21,7 +21,7 @@ const Heading = () => {
                 <Button asChild><Link href="/documents">Enter Notion <ArrowRight className="h-4 w-4 ml-2 "></ArrowRight></Link></Button>   
             )}
             {!isAuthenticated && !isLoading &&(
-                <>\
+                <>
                 <SignInButton mode="modal">
                 <Button size="sm">Get Notion Free <ArrowRight className="h-4 w-4 ml-2 "/></Button></SignInButton></>
             )}  
