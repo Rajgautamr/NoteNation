@@ -10,7 +10,7 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { SignOutButton, useUser} from "@clerk/clerk-react";
 import { ChevronsLeftRight} from "lucide-react";
-const UserData = () => {
+export const UserData = () => {
     const {user} = useUser();
     return ( 
         <DropdownMenu>
@@ -42,7 +42,7 @@ const UserData = () => {
                     </div>
                 </div>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem className="ml-2">
+                <DropdownMenuItem className="ml-2 hover:bg-neutral-100">
                     <SignOutButton ></SignOutButton>
                 </DropdownMenuItem>
             </DropdownMenuContent>
