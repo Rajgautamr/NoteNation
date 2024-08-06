@@ -2,6 +2,7 @@ import { ChevronsLeft, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {ElementRef, useEffect, useRef, useState } from "react";
 import {useMediaQuery} from "usehooks-ts";
+import UserData from "./Userdata";
 
 import { cn } from "@/lib/utils";
 const Navigation = () => {
@@ -59,7 +60,6 @@ const Navigation = () => {
             setIsCollapsed(false);
             setIsResetting(true);
         }
-        
         sidebarRef.current.style.width = isMobile ? "100%" : "240px";
         navbarRef.current.style.setProperty("width" , isMobile ? "0" : "calc(100%-240px)");
         navbarRef.current.style.setProperty("left" , isMobile ? "100%" : "240px");
@@ -84,7 +84,7 @@ const Navigation = () => {
                 <ChevronsLeft className="h-6 w-6"/>
             </div>
             <div>
-                <p>Action items</p>
+                <UserData/>
             </div>
             <div className="mt-4">
                 <p>Documents</p>
