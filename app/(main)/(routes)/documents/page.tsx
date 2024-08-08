@@ -6,9 +6,13 @@ import { api } from "@/convex/_generated/api";
 import {toast } from "sonner";
 import { PlusCircle } from "lucide-react";
 import Image from "next/image";
+
+
+
 const DocumentsPg = () => {
     const {user} = useUser();
     const create = useMutation(api.documents.create);
+
 
     const onCreate = () =>{
         const promise = create({title : "Untitled"});

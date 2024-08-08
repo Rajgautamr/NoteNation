@@ -1,11 +1,17 @@
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { ChevronsLeft, MenuIcon, PlusCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {ElementRef, useEffect, useRef, useState } from "react";
 import {useMediaQuery} from "usehooks-ts";
 import UserData from "./Userdata";
+import Item from "./Item";
 
 import { cn } from "@/lib/utils";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 const Navigation = () => {
+    const documents = useQuery(api.documents.get);
+    const create = useMutation(api.documents.create);
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)");
     const isResizingRef = useRef(false);
@@ -75,6 +81,16 @@ const Navigation = () => {
         navbarRef.current.style.setProperty("left" ,"0");
         setTimeout(() => setIsResetting(false) ,300);}
     }
+
+    const handlecreate = () => {
+        const promise = create({title: "Untitled"});
+
+        toast.promise(promise, {
+            loading: "Creating a new Note",
+            success: "Note created successfully",
+            error: "Oops! Something went wrong"
+        })
+    }
     return ( 
         <>
         <aside ref={sidebarRef} className={cn("h-full group/sidebar bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0") }>
@@ -83,9 +99,12 @@ const Navigation = () => {
             </div>
             <div>
                 <UserData/>
+                <Item onClick={handlecreate} label="New Page" icon={PlusCircle}/>
             </div>
             <div className="mt-4">
-                <p>Documents</p>
+                {documents?.map((document) =>(
+                    <p>{document.title}</p>)
+                )}
             </div>
             <div onMouseDown={handleMouseDown}  onClick={resetwidth} className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" />
         </aside>
