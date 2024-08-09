@@ -1,4 +1,4 @@
-import { ChevronsLeft, MenuIcon, PlusCircle } from "lucide-react";
+import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {ElementRef, useEffect, useRef, useState } from "react";
 import {useMediaQuery} from "usehooks-ts";
@@ -99,6 +99,8 @@ const Navigation = () => {
             </div>
             <div>
                 <UserData/>
+                <Item label="search" icon={Search} isSearch onClick={()=> {}}/>
+                <Item label="Settings" icon={Settings}  onClick={()=> {}}/>
                 <Item onClick={handlecreate} label="New Page" icon={PlusCircle}/>
             </div>
             <div className="mt-4">
