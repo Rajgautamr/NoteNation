@@ -1,6 +1,24 @@
 import {v} from "convex/values";
 import{mutation , query} from "./_generated/server";
 import {Doc , Id} from  "./_generated/dataModel";
+
+
+export const getSidebar = query({
+    args:{
+        parentdocument: v.optional(v.id("documents")),
+    },
+    handler: async(ctx,arg) =>{
+        const identity = await ctx.auth.getUserIdentity();
+        if(!identity){
+            throw new Error("Unauthenticated");
+        }
+
+        const userId = identity.subject;
+
+        const documents = await ctx.db.query("documents").withIndex("by_user_parent" , (q) => q.eq("userid", userId).eq("parentdocuments" , arg.parentdocument)).filter((q) =>q.eq(q.field("isarchived") , false)).order("desc").collect()
+        return documents;
+    }
+})
 export const get = query({
     handler: async(ctx) =>{
         const identity = await ctx.auth.getUserIdentity();

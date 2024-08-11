@@ -6,11 +6,11 @@ import UserData from "./Userdata";
 import Item from "./Item";
 
 import { cn } from "@/lib/utils";
-import { useMutation, useQuery } from "convex/react";
+import { useMutation,} from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
+import DocumentList from "./documentlist";
 const Navigation = () => {
-    const documents = useQuery(api.documents.get);
     const create = useMutation(api.documents.create);
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)");
@@ -104,9 +104,7 @@ const Navigation = () => {
                 <Item onClick={handlecreate} label="New Page" icon={PlusCircle}/>
             </div>
             <div className="mt-4">
-                {documents?.map((document) =>(
-                    <p>{document.title}</p>)
-                )}
+                <DocumentList/>
             </div>
             <div onMouseDown={handleMouseDown}  onClick={resetwidth} className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" />
         </aside>
