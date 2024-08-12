@@ -105,6 +105,7 @@ const Navigation = () => {
             </div>
             <div className="mt-4">
                 <DocumentList/>
+                <DocumentList/>
             </div>
             <div onMouseDown={handleMouseDown}  onClick={resetwidth} className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0" />
         </aside>
