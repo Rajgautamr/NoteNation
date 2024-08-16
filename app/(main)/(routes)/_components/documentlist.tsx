@@ -15,7 +15,7 @@ const DocumentList = ({
     const params = useParams();
     const route = useRouter();
     return ( 
-        <div>s</div>
+        <div>Documents Item's</div>
      );
 }
  
