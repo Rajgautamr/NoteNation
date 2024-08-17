@@ -15,7 +15,7 @@ const DocumentList = ({
     const params = useParams();
     const route = useRouter();
     return ( 
-        <div>Documents Item's</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quo quidem pariatur eaque qui tempore numquam cumque rerum, odio maiores?</div>
      );
 }
  
