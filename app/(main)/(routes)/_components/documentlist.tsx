@@ -25,7 +25,7 @@ const DocumentList = ({
 
     const document  
     return ( 
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quo quidem pariatur eaque qui tempore numquam cumque rerum, odio maiores?</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis  pariatur eaque qui tempore numquam cumque rerum, odio maiores?</div>
      );
 }
  
